@@ -1,0 +1,322 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="parent_MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+  <style>
+  	body{
+		
+	}
+  	.container-fluid{
+		padding:0;
+		font-family: 'Didact Gothic', sans-serif;
+	}
+	
+	.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 900;
+		top: 0;
+		left: 0;
+		background-color:#FFFFFF;
+		overflow-x: hidden;
+		transition: 0.5s;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.sidenav .studentProfile{
+		min-height:200px;
+		padding:20px;
+		background-color:#4d6370;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.sidenav .studentProfile .studentImage{
+		max-height:100px;
+		max-width:100px;
+		min-height:100px;
+		min-width:100px;
+		border-radius:50%;
+		border:#FFFFFF 2px solid;
+		margin:auto;
+		margin-top:1em;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.sidenav .studentProfile .studentname{
+		color:#FFFFFF;
+		font-size:20px;
+		text-align:center;
+		margin-top:10px;
+	}
+	.studentclass{
+		color:#FFFFFF;
+		font-size:15px;
+		text-align:center;
+		margin-top:5px;
+	}
+	
+	.sidenav .menusidenav{
+		padding:5px;
+	}
+	.sidenav .menusidenav:hover{
+		background-color:#F5F5F5;
+	}
+	.sidenav .menusidenav i{
+		margin-right:10px;
+	}
+	.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 20px;
+		color:#000000;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+		color: #000000;
+	}
+	
+	.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 5px;
+		font-size: 36px;
+		margin-left: 50px;
+		color:#FFFFFF;
+		display:none;
+	}
+	.sidenav .closebtn:hover{
+		color:#FFFFFF;
+	}
+	#mainSchool {
+		transition: margin-left .5s;
+		padding-left:5px;
+	}
+	.heading
+	{
+	    background-color:#4d6370;
+	    color:White;
+	   
+	}
+	.heading1
+	{
+	    background-color:#4d6370;
+	    color:White;
+	    font-size:x-large;
+	}
+  	.headtop
+  	{
+  	    background-color:#F0F0F0;
+		min-height:50px;
+		background-color:#FFFFFF;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+		padding:10px;
+		width:100%;
+		z-index:800;
+	}
+	.headtop .glyphicon-menu-hamburger{
+		font-size:24px;
+		margin-left:10%;
+		cursor:pointer;
+		display:none;
+	}
+	.headtop .schoolname{
+		margin-left:5%;
+		font-size:26px;
+	}
+	.headtop .effectsImages{
+		max-height:60px;
+		max-width:70px;
+		display:inline-block;
+		margin-top:-10px;
+	}
+	
+	.coverPictureSchool .schoolImg{
+		min-height:500px;
+		max-height:500px;
+		min-width:100%;
+	}
+	
+	.quickview{
+		background-color:#F0F0F0;
+		min-height:200px;
+		margin:0;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.quickview .heading{
+		background-color:#4d6370;
+		color:#FFFFFF;
+		font-size:24px;
+		
+		padding:10px 0;
+		min-height:50px;
+		padding:10px;
+	}
+	.quickview .heading .indicategly{
+		max-height:50px;
+		max-width:50px;
+		display:inline-block;
+	}
+	.quickview .seprationquickview{
+		padding:0;
+	}
+	.quickview .seprationquickview:nth-child(2){
+		border-right:#FFFFFF 1px solid;
+		border-left:#FFFFFF 1px solid;
+	}
+	.quickview .seprationquickview .detailsindicate{
+		min-height:40px;
+		background-color:#F0F0F0;
+		padding:10px;
+		border-bottom:#E2E2E2 1px solid;
+	}
+	.quickview .seprationquickview .detailsindicate:hover{
+		background-color:#E2E2E2;
+	}
+	.quickview .seprationquickview .detailsindicate h5{
+		font-size:20px;
+		clear:both;
+	}
+	.quickview .seprationquickview .detailsindicate h6{
+		font-size:12px;
+		font-weight:500;
+		float:right;
+	}
+	.quickview .seprationquickview .detailsindicate p{
+		font-size:16px;
+	}
+	.quickview .seprationquickview .eventImages{
+		float:left;
+		max-height:70px;
+		max-width:70px;
+		min-height:70px;
+		min-width:70px;
+		margin-right:10px;
+		border-radius:3px;
+	}
+	
+	
+	
+	
+	@media screen and (max-width:678px){
+		.headtop .glyphicon-menu-hamburger{
+			margin-left:5%;
+			display: inline-block;
+		}
+		.headtop .schoolname{
+			font-size:20px;
+		}
+		.coverPictureSchool .schoolImg{
+			min-height:400px;
+			max-height:400px;
+		}
+		.sidenav a {
+			font-size:16px;
+		}
+		.sidenav .closebtn{
+			display:block;
+		}
+		#mainSchool {
+			padding:0;
+		}
+		.quickview .seprationquickview:nth-child(2){
+			border-right:none;
+			border-left:none;
+		}
+	}
+</style>	
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+<form id="form1" runat="server">
+    <div>
+    
+<div class="container-fluid">
+
+	<!-- side navbar containt -->
+    
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><b>></b></a>
+      <div class="studentProfile">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Image ID="img" runat="server" CssClass="img-circle studentImage img-responsive" Height="60px" Width="60px"  />
+        <div class="studentname"> <asp:Label runat="server" ID="lblstdnm"></asp:Label></div>
+        <div class="studentclass"><asp:Label runat="server" ID="lblclass" ></asp:Label></div>
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="logout" Text="Logout" runat="server" onclick="logout_Click" />
+      </div>
+       <div class="menusidenav"><a href="Default.aspx"><i class="fa fa-home fa-fw w3-margin-right"></i> Home</a></div>
+      <div class="menusidenav"><a href="home-list.aspx"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Homework</a></div>
+      <div class="menusidenav"><a href="att.aspx"><i class="fa fa-calendar fa-fw w3-margin-right"></i> Attendance</a></div>
+    
+      <div class="menusidenav"><a href="notice-list.aspx"><i class="fa fa-users fa-fw w3-margin-right"></i> Notices</a></div>
+      <div class="menusidenav"><a href="events-list.aspx"><i class="glyphicon glyphicon-send fa-fw w3-margin-right"></i> Events</a></div>
+      <div class="menusidenav"><a href="update.aspx"><i class="glyphicon glyphicon-bookmark fa-fw w3-margin-right"></i> Update Profile</a></div>
+      <div class="menusidenav"><a href="news.aspx"><i class="glyphicon glyphicon-bookmark fa-fw w3-margin-right"></i> News Feed</a></div>
+      <div class="menusidenav"><a href="course.aspx"><i class="fa fa-users fa-fw w3-margin-right"></i> Courses</a></div>
+      <div class="menusidenav"><a href="blog.aspx"><i class="glyphicon glyphicon-log-out fa-fw w3-margin-right"></i><b>Blogs</b></a></div>
+      <div class="menusidenav"><a href="msg.aspx"><i class="glyphicon glyphicon-bookmark fa-fw w3-margin-right"></i> Messages from Teacher</a></div>
+      <div class="menusidenav"><a href="Copy of blog.aspx"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Leave application</a></div>
+      <div class="menusidenav"><a href="gal.aspx"><i class="glyphicon glyphicon-hourglass fa-fw w3-margin-right"></i> Photo Gallery</a></div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            if ($(window).width() > 687) {
+                document.getElementById("mainSchool").style.marginLeft = "250px";
+            } else {
+                document.getElementById("mainSchool").style.marginLeft = "0px";
+            }
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0px";
+            if ($(window).width() > 687) {
+                document.getElementById("mainSchool").style.marginLeft = "0px";
+            } else {
+                document.getElementById("mainSchool").style.marginLeft = "0px";
+            }
+        }
+
+        $(document).ready(function () {
+
+            if ($(window).width() > 687) {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("mainSchool").style.marginLeft = "250px";
+            }
+            else {
+                //alert('less than 687');
+                document.getElementById("mainSchool").style.marginLeft = "0px";
+            }
+
+        });
+	</script>
+
+    <!-- side navbar containt ends -->
+
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

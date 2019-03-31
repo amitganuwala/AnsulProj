@@ -1,0 +1,208 @@
+﻿
+  	body{
+		
+	}
+  	.container-fluid{
+		padding:0;
+		font-family: 'Didact Gothic', sans-serif;
+	}
+	
+	.sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 900;
+		top: 0;
+		left: 0;
+		background-color:#FFFFFF;
+		overflow-x: hidden;
+		transition: 0.5s;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.sidenav .studentProfile{
+		min-height:200px;
+		padding:20px;
+		background-color:#4d6370;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.sidenav .studentProfile .studentImage{
+		max-height:100px;
+		max-width:100px;
+		min-height:100px;
+		min-width:100px;
+		border-radius:50%;
+		border:#FFFFFF 2px solid;
+		margin:auto;
+		margin-top:1em;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.sidenav .studentProfile .studentname{
+		color:#FFFFFF;
+		font-size:20px;
+		text-align:center;
+		margin-top:10px;
+	}
+	.studentclass{
+		color:#FFFFFF;
+		font-size:15px;
+		text-align:center;
+		margin-top:5px;
+	}
+	
+	.sidenav .menusidenav{
+		padding:5px;
+	}
+	.sidenav .menusidenav:hover{
+		background-color:#F5F5F5;
+	}
+	.sidenav .menusidenav i{
+		margin-right:10px;
+	}
+	.sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 20px;
+		color:#000000;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	.sidenav a:hover {
+		color: #000000;
+	}
+	
+	.sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 5px;
+		font-size: 36px;
+		margin-left: 50px;
+		color:#FFFFFF;
+		display:none;
+	}
+	.sidenav .closebtn:hover{
+		color:#FFFFFF;
+	}
+	#mainSchool {
+		transition: margin-left .5s;
+		padding-left:5px;
+	}
+	
+  	.headtop{
+		min-height:50px;
+		background-color:#FFFFFF;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+		padding:10px;
+		width:100%;
+		z-index:800;
+	}
+	.headtop .glyphicon-menu-hamburger{
+		font-size:24px;
+		margin-left:10%;
+		cursor:pointer;
+		display:none;
+	}
+	.headtop .schoolname{
+		margin-left:5%;
+		font-size:26px;
+	}
+	.headtop .effectsImages{
+		max-height:60px;
+		max-width:70px;
+		display:inline-block;
+		margin-top:-10px;
+	}
+	
+	.coverPictureSchool .schoolImg{
+		min-height:500px;
+		max-height:500px;
+		min-width:100%;
+	}
+	
+	.quickview{
+		background-color:#F0F0F0;
+		min-height:200px;
+		margin:0;
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	}
+	.quickview .heading{
+		background-color:#4d6370;
+		color:#FFFFFF;
+		font-size:24px;
+		text-align:center;
+		padding:10px 0;
+		min-height:50px;
+		padding:10px;
+	}
+	.quickview .heading .indicategly{
+		max-height:50px;
+		max-width:50px;
+		display:inline-block;
+	}
+	.quickview .seprationquickview{
+		padding:0;
+	}
+	.quickview .seprationquickview:nth-child(2){
+		border-right:#FFFFFF 1px solid;
+		border-left:#FFFFFF 1px solid;
+	}
+	.quickview .seprationquickview .detailsindicate{
+		min-height:40px;
+		background-color:#F0F0F0;
+		padding:10px;
+		border-bottom:#E2E2E2 1px solid;
+	}
+	.quickview .seprationquickview .detailsindicate:hover{
+		background-color:#E2E2E2;
+	}
+	.quickview .seprationquickview .detailsindicate h5{
+		font-size:20px;
+		clear:both;
+	}
+	.quickview .seprationquickview .detailsindicate h6{
+		font-size:12px;
+		font-weight:500;
+		float:right;
+	}
+	.quickview .seprationquickview .detailsindicate p{
+		font-size:16px;
+	}
+	.quickview .seprationquickview .eventImages{
+		float:left;
+		max-height:70px;
+		max-width:70px;
+		min-height:70px;
+		min-width:70px;
+		margin-right:10px;
+		border-radius:3px;
+	}
+	
+	
+	
+	
+	@media screen and (max-width:678px){
+		.headtop .glyphicon-menu-hamburger{
+			margin-left:5%;
+			display: inline-block;
+		}
+		.headtop .schoolname{
+			font-size:20px;
+		}
+		.coverPictureSchool .schoolImg{
+			min-height:400px;
+			max-height:400px;
+		}
+		.sidenav a {
+			font-size:16px;
+		}
+		.sidenav .closebtn{
+			display:block;
+		}
+		#mainSchool {
+			padding:0;
+		}
+		.quickview .seprationquickview:nth-child(2){
+			border-right:none;
+			border-left:none;
+		}
+	}
