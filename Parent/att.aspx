@@ -35,7 +35,7 @@
                           </asp:GridView>
                         
                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                               ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
+                               ConnectionString="<%$ ConnectionStrings:school_mateConnectionString6 %>" 
                                
                                  SelectCommand="SELECT [name], [class], [date], [status] FROM [attendance] WHERE (([class] = @class) AND ([school] = @school) AND ([name] = @name)) ORDER BY [date] DESC">
                                <SelectParameters>

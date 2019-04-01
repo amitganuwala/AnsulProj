@@ -18,7 +18,8 @@ public partial class login : System.Web.UI.Page
     
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
-        string conn = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
+        string conn = ClsVariable.ConnectionString;
+        //string conn = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
         //string conn = ConfigurationManager.ConnectionStrings["Data Source=intel-pc\\sqlexpress;Initial Catalog=rentshopee;Integrated Security=True"].ConnectionString;
         SqlConnection objcon = new SqlConnection(conn);
         objcon.Open();
@@ -58,7 +59,8 @@ public partial class login : System.Web.UI.Page
             //Most important, write the cookie to client.
             Response.Cookies.Add(myCookies);
 
-            string conn1 = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
+            string conn1 = ClsVariable.ConnectionString;
+            //string conn1 = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
             //string conn = ConfigurationManager.ConnectionStrings["Data Source=intel-pc\\sqlexpress;Initial Catalog=rentshopee;Integrated Security=True"].ConnectionString;
             SqlConnection objcon1 = new SqlConnection(conn1);
             objcon1.Open();
