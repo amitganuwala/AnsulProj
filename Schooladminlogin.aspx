@@ -56,7 +56,7 @@
                     
                     <hr>
 	
-                    <asp:GridView ID="GridView1" runat="server" Visible="false" AutoGenerateColumns="False" 
+                    <asp:GridView ID="GridView1" runat="server" Visible="False" AutoGenerateColumns="False" 
                         DataSourceID="SqlDataSource1">
                         <Columns>
                             <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
@@ -65,7 +65,7 @@
                         </Columns>
                     </asp:GridView>
 		            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
+                        ConnectionString="<%$ ConnectionStrings:school_mateConnectionString6 %>" 
                         SelectCommand="SELECT [name], [school] FROM [schooladmin] WHERE ([usr] = @usr)">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="txtname" Name="usr" PropertyName="Text" 

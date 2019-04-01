@@ -9,7 +9,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ClsVariable.ConnectionString = "Data Source=DESKTOP-54TBQHS\\SQL2014;Persist Security Info=True;Initial Catalog=school_mate;User ID=sa;Password=mit";
+        ClsVariable.ConnectionString = "Data Source=DESKTOP-9ELN49A\\SQL2014;Persist Security Info=True;Initial Catalog=school_mate;User ID=sa;Password=sky";
     }
     protected void btn_Click(object sender, EventArgs e)
     {
