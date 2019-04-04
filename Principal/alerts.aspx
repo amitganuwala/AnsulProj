@@ -22,8 +22,7 @@
             <asp:Button ID="btn" class="btn btn-primary btn-success" runat="server" onclick="btn_Click" Text="Add Alerts" />
             <br /><br />
                           <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" 
-                                        runat="server" AutoGenerateColumns="False" AllowSorting="True" 
-                                        DataSourceID="SqlDataSource1" DataKeyNames="id">
+                                        runat="server" AutoGenerateColumns="False" AllowSorting="True" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
                               <Columns>
                                   <asp:CommandField ShowDeleteButton="True" />
                                   <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" 
@@ -38,43 +37,7 @@
             
             </asp:GridView>
 
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                ConflictDetection="CompareAllValues" 
-                                ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
-                                DeleteCommand="DELETE FROM [alert] WHERE [id] = @original_id AND [tname] = @original_tname AND [msg] = @original_msg AND [school] = @original_school AND [date] = @original_date" 
-                                InsertCommand="INSERT INTO [alert] ([tname], [msg], [school], [date]) VALUES (@tname, @msg, @school, @date)" 
-                                OldValuesParameterFormatString="original_{0}" 
-                                SelectCommand="SELECT * FROM [alert] WHERE ([school] = @school) ORDER BY [id] DESC" 
-                                UpdateCommand="UPDATE [alert] SET [tname] = @tname, [msg] = @msg, [school] = @school, [date] = @date WHERE [id] = @original_id AND [tname] = @original_tname AND [msg] = @original_msg AND [school] = @original_school AND [date] = @original_date">
-                                        <DeleteParameters>
-                                            <asp:Parameter Name="original_id" Type="Int32" />
-                                            <asp:Parameter Name="original_tname" Type="String" />
-                                            <asp:Parameter Name="original_msg" Type="String" />
-                                            <asp:Parameter Name="original_school" Type="String" />
-                                            <asp:Parameter Name="original_date" Type="String" />
-                                        </DeleteParameters>
-                                        <InsertParameters>
-                                            <asp:Parameter Name="tname" Type="String" />
-                                            <asp:Parameter Name="msg" Type="String" />
-                                            <asp:Parameter Name="school" Type="String" />
-                                            <asp:Parameter Name="date" Type="String" />
-                                        </InsertParameters>
-                                        <SelectParameters>
-                                            <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                                Type="String" />
-                                        </SelectParameters>
-                                        <UpdateParameters>
-                                            <asp:Parameter Name="tname" Type="String" />
-                                            <asp:Parameter Name="msg" Type="String" />
-                                            <asp:Parameter Name="school" Type="String" />
-                                            <asp:Parameter Name="date" Type="String" />
-                                            <asp:Parameter Name="original_id" Type="Int32" />
-                                            <asp:Parameter Name="original_tname" Type="String" />
-                                            <asp:Parameter Name="original_msg" Type="String" />
-                                            <asp:Parameter Name="original_school" Type="String" />
-                                            <asp:Parameter Name="original_date" Type="String" />
-                                        </UpdateParameters>
-                            </asp:SqlDataSource>
+
 
             </div></div></div>
             </section></section>

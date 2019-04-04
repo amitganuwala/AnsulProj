@@ -23,15 +23,7 @@
                           </div>
                           <div class="form-group">
                              <asp:Label ID="Label2" runat="server" Text="Class: " Font-Bold="true" ForeColor="Black"></asp:Label>
-                              <asp:DropDownList runat="server" placeholder="Select Class" ID="ddlclass" CssClass="form-control" DataSourceID="SqlDataSource1" DataTextField="class" DataValueField="class"></asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
-                                    SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school)">
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                            Type="String" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
+                              <asp:DropDownList runat="server" placeholder="Select Class" ID="ddlclass" CssClass="form-control" ></asp:DropDownList>
                           </div>
                           <div class="form-group">
                                                <asp:Label ID="Label4" runat="server" Text="Mobile: " Font-Bold="true" ForeColor="Black"></asp:Label>

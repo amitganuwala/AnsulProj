@@ -11,6 +11,8 @@ using System.Web.UI.WebControls;
 
 public partial class login : System.Web.UI.Page
 {
+
+    ClsGlobal glb = new ClsGlobal();
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -40,9 +42,7 @@ public partial class login : System.Web.UI.Page
         pwd.SqlDbType = SqlDbType.VarChar;
         pwd.Value = txtpass.Text;
         objcmd.Parameters.Add(pwd);
-
-
-        SqlDataReader objreader = objcmd.ExecuteReader();
+                                 SqlDataReader objreader = objcmd.ExecuteReader();
         if (objreader.Read() == true)
         {
 
@@ -62,6 +62,12 @@ public partial class login : System.Web.UI.Page
 
             //Most important, write the cookie to client.
             Response.Cookies.Add(myCookiepr);
+           
+            string sql3 = "select namr,school from principal where usr = '" + txtname.Text + "'";
+            DataSet ds = new DataSet();
+            ds = glb.GetDataSet(sql3);
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
 
 
             SqlConnection objcon1 = new SqlConnection(ClsVariable.ConnectionString); 

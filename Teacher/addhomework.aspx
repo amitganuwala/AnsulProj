@@ -28,26 +28,13 @@
                              </div>
                           <div class="form-group">
                              <asp:Label ID="Label1" runat="server" Text="Select Class: " Font-Bold="true" ForeColor="Black"></asp:Label>
-                               <asp:DropDownList ID="DropDownList1" class="form-control" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource37" DataTextField="class" DataValueField="class"></asp:DropDownList>
-                          <asp:SqlDataSource ID="SqlDataSource37" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [subject] WHERE (([name] = @name) AND ([school] = @school))">
-                              <SelectParameters>
-                                  <asp:ControlParameter ControlID="lbltchnm" Name="name" PropertyName="Text" Type="String" />
-                                  <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
-                              </SelectParameters>
-                        </asp:SqlDataSource>
+                               <asp:DropDownList ID="DropDownList1" class="form-control" runat="server" AutoPostBack="true" ></asp:DropDownList>
                           </div>
                            <cc1:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server"></cc1:ToolkitScriptManager>
                          
                           <div class="form-group">
                                      <asp:Label ID="Label3" runat="server" Text="Subject:" Font-Bold="true" ForeColor="Black"></asp:Label>
-                             <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" DataSourceID="SqlDataSource3" DataTextField="subject" DataValueField="subject"></asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [subject] FROM [subject] WHERE (([class] = @class) AND ([name] = @name) AND ([school] = @school))">
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="DropDownList1" Name="class" PropertyName="SelectedValue" Type="String" />
-                                        <asp:ControlParameter ControlID="lbltchnm" Name="name" PropertyName="Text" Type="String" />
-                                        <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
-                                    </SelectParameters>
-              </asp:SqlDataSource>
+                             <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" ></asp:DropDownList>
                      </div>
                               </div>
                           <div class="col-lg-1">

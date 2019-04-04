@@ -9,6 +9,15 @@ using System.Data.SqlClient;
 
 public partial class Principal_add_alerts : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+    DataSet dss3 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+    public static string Tname = "";
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Sessioninfo();
@@ -24,13 +33,28 @@ public partial class Principal_add_alerts : System.Web.UI.Page
 
             string userId = myCookiepr["prnm"];
 
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectprinci(userId);
+            string sql = "select * from principal where usr = '" + userId + "'";
+            dss = glb.GetDataSet(sql);
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [name] FROM [teacher] WHERE ([school] = '"+ dss.Tables[0].Rows[0]["school"].ToString() + "')";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "name";
+                DropDownList1.DataValueField = "name";
+                DropDownList1.DataBind();
+
+                
+            }
+
+         
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 // lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
                 lblsch.Text = dss.Tables[0].Rows[0]["school"].ToString();
+                
             }
             else
             {
@@ -45,7 +69,17 @@ public partial class Principal_add_alerts : System.Web.UI.Page
 
                 Response.Redirect("../Principallogin.aspx");
             }
+
+            fillGridView1(lblsch.Text);
         }
+    }
+
+    public void fillGridView1(string school_nm)
+    {
+        string sql = "SELECT [mob] FROM [teacher] WHERE (([school] = '"+school_nm+ "')AND ([name] = '" + DropDownList1.SelectedValue + "'))";
+        dss2 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss2;
+        GridView1.DataBind();
     }
     protected void btnadd_Click(object sender, EventArgs e)
     {
@@ -91,6 +125,7 @@ public partial class Principal_add_alerts : System.Web.UI.Page
         script += "'; }";
         ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
 
+        //Message Sending code
         Select.sendalert(GridView1.Rows[0].Cells[0].Text, txttask.Text, lblsch.Text);
         Class1.WebMsgBox.Show("Sms sent");
        

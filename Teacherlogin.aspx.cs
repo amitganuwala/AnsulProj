@@ -11,13 +11,18 @@ using System.Web.UI.WebControls;
 
 public partial class login : System.Web.UI.Page
 {
+    ClsGlobal glb = new ClsGlobal();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
     
+
     protected void btnsubmit_Click(object sender, EventArgs e)
     {
+
+
         //string conn = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
         //string conn = ConfigurationManager.ConnectionStrings["Data Source=intel-pc\\sqlexpress;Initial Catalog=rentshopee;Integrated Security=True"].ConnectionString;
         SqlConnection objcon = new SqlConnection(ClsVariable.ConnectionString);
@@ -57,9 +62,18 @@ public partial class login : System.Web.UI.Page
 
        //Most important, write the cookie to client.
        Response.Cookies.Add(myCookiet);
-       //string conn1 = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
-       //string conn = ConfigurationManager.ConnectionStrings["Data Source=intel-pc\\sqlexpress;Initial Catalog=rentshopee;Integrated Security=True"].ConnectionString;
-       SqlConnection objcon1 = new SqlConnection(ClsVariable.ConnectionString);
+
+            string sql3 = "SELECT [name], [school] FROM [teacher] WHERE ([usr] = '"+txtname.Text+"')";
+            DataSet ds = new DataSet();
+            ds = glb.GetDataSet(sql3);
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
+
+
+
+            //string conn1 = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
+            //string conn = ConfigurationManager.ConnectionStrings["Data Source=intel-pc\\sqlexpress;Initial Catalog=rentshopee;Integrated Security=True"].ConnectionString;
+            SqlConnection objcon1 = new SqlConnection(ClsVariable.ConnectionString);
        objcon1.Open();
 
        SqlCommand objcmd1 = new SqlCommand("splogindet", objcon1);

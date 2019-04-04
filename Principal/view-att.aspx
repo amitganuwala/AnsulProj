@@ -17,7 +17,7 @@
           			<div class="form-panel">
 
                                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="class" DataValueField="class" ></asp:DropDownList>
-              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id] DESC">
+              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id] DESC">
                   <SelectParameters>
                       <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                   </SelectParameters>
