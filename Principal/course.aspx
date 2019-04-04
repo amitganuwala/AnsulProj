@@ -18,7 +18,7 @@
                        
                             <h2><asp:Label runat="server" ID="lblsch" Text="school" ForeColor="Black"></asp:Label></h2>
                          
-                       <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" AllowSorting="True">
+                       <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False" AllowSorting="True">
                            <Columns>
                                <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" 
                                    ReadOnly="True" SortExpression="id" />
@@ -36,16 +36,7 @@
                                    SortExpression="course" />
                            </Columns>
                           </asp:GridView>
-                           
-                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
-                              
-                              SelectCommand="SELECT * FROM [course] WHERE ([school] = @school) ORDER BY [id] DESC">
-                              <SelectParameters>
-                                  <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                      Type="String" />
-                              </SelectParameters>
-                          </asp:SqlDataSource>
+                         
                            
                       </div></div></div></section></section>
 

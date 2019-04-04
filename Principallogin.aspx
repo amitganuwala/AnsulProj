@@ -54,25 +54,16 @@
 		            <asp:Button runat="server" ID="btnsubmit" class="btn btn-theme btn-block" Text="Sign In" OnClick="btnsubmit_Click"/>
 		            
                     
-                    <hr>
+                    <hr/>
 	
-                    <asp:GridView ID="GridView1" runat="server" Visible="False" AutoGenerateColumns="False" 
-                        DataSourceID="SqlDataSource1">
+                    <asp:GridView ID="GridView1" runat="server" Visible="False" AutoGenerateColumns="False">
                         <Columns>
                             <asp:BoundField DataField="namr" HeaderText="namr" SortExpression="namr" />
                             <asp:BoundField DataField="school" HeaderText="school" 
                                 SortExpression="school" />
                         </Columns>
                     </asp:GridView>
-		            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:school_mateConnectionString6 %>" 
-                        SelectCommand="SELECT [namr], [school] FROM [principal] WHERE ([usr] = @usr)">
-                        <SelectParameters>
-                            <asp:ControlParameter ControlID="txtname" Name="usr" PropertyName="Text" 
-                                Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-		      </form>	  	
+		            </form>	  	
 	  	
 	  	</div>
 	  </div>

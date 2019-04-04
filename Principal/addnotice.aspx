@@ -25,13 +25,8 @@
     
                           <div class="form-group">
                              <asp:Label ID="Label2" runat="server" Text="Class: " Font-Bold="true" ForeColor="Black"></asp:Label>
-                               <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="class" DataValueField="class"></asp:DropDownList>
+                               <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AppendDataBoundItems="true" ></asp:DropDownList>
           	
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id]">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
-                    </SelectParameters>
-              </asp:SqlDataSource>
               <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
                           </div>
                            <div class="form-group">

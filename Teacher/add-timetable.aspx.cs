@@ -10,6 +10,25 @@ using System.Web.UI.WebControls;
 
 public partial class Teacher_add_timetable : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+    DataSet dss3 = new DataSet();
+    DataSet dss4 = new DataSet();
+    DataSet dss5 = new DataSet();
+    DataSet dss6 = new DataSet();
+    DataSet dss7 = new DataSet();
+    DataSet dss8 = new DataSet();
+    DataSet dss9 = new DataSet();
+    DataSet dss10 = new DataSet();
+    DataSet dss11 = new DataSet();
+    DataSet dss12 = new DataSet();
+    DataSet dss13 = new DataSet();
+    DataSet dss14 = new DataSet();
+    DataSet dss15 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -27,10 +46,12 @@ public partial class Teacher_add_timetable : System.Web.UI.Page
         {
 
             string userId = myCookiet["tnm"];
-            
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectimeses(userId);
+
+            string sql = "select * from teacher where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -48,6 +69,11 @@ public partial class Teacher_add_timetable : System.Web.UI.Page
                 ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
 
                 Response.Redirect("../locklogin.aspx");
+            }
+
+          if(!IsPostBack)
+            {
+                SetValues();
             }
         }
     }
@@ -1266,4 +1292,221 @@ public partial class Teacher_add_timetable : System.Web.UI.Page
 
       //  Response.Redirect("view-timetable.aspx");
     }
+
+
+    public void SetValues()
+    {
+        string sql = "SELECT [class] FROM [subject] WHERE (([name] = '"+lbltchnm.Text+"') AND ([school] = '"+lblsch.Text+"'))";
+        dss1 = glb.GetDataSet(sql);
+        DropDownList1.DataSource = dss1.Tables[0];
+        DropDownList1.DataTextField = "class";
+        DropDownList1.DataValueField = "class";
+        DropDownList1.DataBind();
+
+        string sql1 = "SELECT [snm] FROM [subject-info] ORDER BY [id]";
+        dss2 = glb.GetDataSet(sql1);
+        d1l1.DataSource = dss2.Tables[0];
+        d1l1.DataTextField = "snm";
+        d1l1.DataValueField = "snm";
+        d1l1.DataBind();
+
+        string sql2 = "SELECT [snm] FROM [subject-info]";
+        dss3 = glb.GetDataSet(sql2);
+        d1l2.DataSource = dss3.Tables[0];
+        d1l2.DataTextField = "snm";
+        d1l2.DataValueField = "snm";
+        d1l2.DataBind();
+
+
+        string sql3 = "SELECT [snm] FROM [subject-info]";
+        dss4 = glb.GetDataSet(sql3);
+        d1l3.DataSource = dss4.Tables[0];
+        d1l3.DataTextField = "snm";
+        d1l3.DataValueField = "snm";
+        d1l3.DataBind();
+
+        d1l4.DataSource = dss4.Tables[0];
+        d1l4.DataTextField = "snm";
+        d1l4.DataValueField = "snm";
+        d1l4.DataBind();
+
+        d1l5.DataSource = dss4.Tables[0];
+        d1l5.DataTextField = "snm";
+        d1l5.DataValueField = "snm";
+        d1l5.DataBind();
+
+        d1l6.DataSource = dss4.Tables[0];
+        d1l6.DataTextField = "snm";
+        d1l6.DataValueField = "snm";
+        d1l6.DataBind();
+
+        d2l1.DataSource = dss4.Tables[0];
+        d2l1.DataTextField = "snm";
+        d2l1.DataValueField = "snm";
+        d2l1.DataBind();
+
+        d2l2.DataSource = dss4.Tables[0];
+        d2l2.DataTextField = "snm";
+        d2l2.DataValueField = "snm";
+        d2l2.DataBind();
+
+        d2l3.DataSource = dss4.Tables[0];
+        d2l3.DataTextField = "snm";
+        d2l3.DataValueField = "snm";
+        d2l3.DataBind();
+
+        d2l4.DataSource = dss4.Tables[0];
+        d2l4.DataTextField = "snm";
+        d2l4.DataValueField = "snm";
+        d2l4.DataBind();
+
+
+        d2l5.DataSource = dss4.Tables[0];
+        d2l5.DataTextField = "snm";
+        d2l5.DataValueField = "snm";
+        d2l5.DataBind();
+
+        d2l6.DataSource = dss4.Tables[0];
+        d2l6.DataTextField = "snm";
+        d2l6.DataValueField = "snm";
+        d2l6.DataBind();
+
+        d3l1.DataSource = dss4.Tables[0];
+        d3l1.DataTextField = "snm";
+        d3l1.DataValueField = "snm";
+        d3l1.DataBind();
+
+        d3l2.DataSource = dss4.Tables[0];
+        d3l2.DataTextField = "snm";
+        d3l2.DataValueField = "snm";
+        d3l2.DataBind();
+
+        d3l3.DataSource = dss4.Tables[0];
+        d3l3.DataTextField = "snm";
+        d3l3.DataValueField = "snm";
+        d3l3.DataBind();
+
+
+        d3l4.DataSource = dss4.Tables[0];
+        d3l4.DataTextField = "snm";
+        d3l4.DataValueField = "snm";
+        d3l4.DataBind();
+
+
+        d3l5.DataSource = dss4.Tables[0];
+        d3l5.DataTextField = "snm";
+        d3l5.DataValueField = "snm";
+        d3l5.DataBind();
+
+        d3l6.DataSource = dss4.Tables[0];
+        d3l6.DataTextField = "snm";
+        d3l6.DataValueField = "snm";
+        d3l6.DataBind();
+
+
+        d4l1.DataSource = dss4.Tables[0];
+        d4l1.DataTextField = "snm";
+        d4l1.DataValueField = "snm";
+        d4l1.DataBind();
+
+
+
+        d4l2.DataSource = dss4.Tables[0];
+        d4l2.DataTextField = "snm";
+        d4l2.DataValueField = "snm";
+        d4l2.DataBind();
+
+
+
+        d4l3.DataSource = dss4.Tables[0];
+        d4l3.DataTextField = "snm";
+        d4l3.DataValueField = "snm";
+        d4l3.DataBind();
+
+
+        d4l4.DataSource = dss4.Tables[0];
+        d4l4.DataTextField = "snm";
+        d4l4.DataValueField = "snm";
+        d4l4.DataBind();
+
+        d4l5.DataSource = dss4.Tables[0];
+        d4l5.DataTextField = "snm";
+        d4l5.DataValueField = "snm";
+        d4l5.DataBind();
+
+        d4l6.DataSource = dss4.Tables[0];
+        d4l6.DataTextField = "snm";
+        d4l6.DataValueField = "snm";
+        d4l6.DataBind();
+
+        d4l6.DataSource = dss4.Tables[0];
+        d4l6.DataTextField = "snm";
+        d4l6.DataValueField = "snm";
+        d4l6.DataBind();
+
+        d5l1.DataSource = dss4.Tables[0];
+        d5l1.DataTextField = "snm";
+        d5l1.DataValueField = "snm";
+        d5l1.DataBind();
+
+
+        d5l2.DataSource = dss4.Tables[0];
+        d5l2.DataTextField = "snm";
+        d5l2.DataValueField = "snm";
+        d5l2.DataBind();
+
+        d5l3.DataSource = dss4.Tables[0];
+        d5l3.DataTextField = "snm";
+        d5l3.DataValueField = "snm";
+        d5l3.DataBind();
+
+        d5l4.DataSource = dss4.Tables[0];
+        d5l4.DataTextField = "snm";
+        d5l4.DataValueField = "snm";
+        d5l4.DataBind();
+
+        d5l5.DataSource = dss4.Tables[0];
+        d5l5.DataTextField = "snm";
+        d5l5.DataValueField = "snm";
+        d5l5.DataBind();
+
+        d5l6.DataSource = dss4.Tables[0];
+        d5l6.DataTextField = "snm";
+        d5l6.DataValueField = "snm";
+        d5l6.DataBind();
+
+        d6l1.DataSource = dss4.Tables[0];
+        d6l1.DataTextField = "snm";
+        d6l1.DataValueField = "snm";
+        d6l1.DataBind();
+
+        d6l2.DataSource = dss4.Tables[0];
+        d6l2.DataTextField = "snm";
+        d6l2.DataValueField = "snm";
+        d6l2.DataBind();
+
+        d6l3.DataSource = dss4.Tables[0];
+        d6l3.DataTextField = "snm";
+        d6l3.DataValueField = "snm";
+        d6l3.DataBind();
+
+        d6l4.DataSource = dss4.Tables[0];
+        d6l4.DataTextField = "snm";
+        d6l4.DataValueField = "snm";
+        d6l4.DataBind();
+
+        d6l5.DataSource = dss4.Tables[0];
+        d6l5.DataTextField = "snm";
+        d6l5.DataValueField = "snm";
+        d6l5.DataBind();
+
+
+        d6l6.DataSource = dss4.Tables[0];
+        d6l6.DataTextField = "snm";
+        d6l6.DataValueField = "snm";
+        d6l6.DataBind();
+
+
+    }
+
 }

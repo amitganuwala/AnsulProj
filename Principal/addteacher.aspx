@@ -28,7 +28,7 @@
                           </div>
                           <div class="form-group">
                              <asp:Label ID="Label3" runat="server" Text="Mobile No. : " Font-Bold="true" ForeColor="Black"></asp:Label>
-                              <asp:TextBox runat="server" class="form-control" id="txtmob" ></asp:TextBox>
+                              <asp:TextBox runat="server" class="form-control" id="txtmob" MaxLength="10" ></asp:TextBox>
                           </div>
                           <div class="form-group">
                                 <asp:Label ID="Label4" runat="server" Text="Address:" Font-Bold="true" ForeColor="Black"></asp:Label>

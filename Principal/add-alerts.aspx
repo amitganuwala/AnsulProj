@@ -17,25 +17,17 @@
                       <form class="form-inline" role="form">
                           <div class="form-group">
                              <asp:Label ID="Label2" runat="server" Text="Teacher name: " Font-Bold="true" ForeColor="Black"></asp:Label>
-                         <asp:DropDownList ID="DropDownList1" AutoPostBack="true" class="form-control" runat="server" DataSourceID="SqlDataSource1" 
-                                  DataTextField="name" DataValueField="name"></asp:DropDownList>
-                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                  ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
-                                  SelectCommand="SELECT [name] FROM [teacher] WHERE ([school] = @school)">
-                                  <SelectParameters>
-                                      <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                          Type="String" />
-                                  </SelectParameters>
-                              </asp:SqlDataSource>
+                         <asp:DropDownList ID="DropDownList1" AutoPostBack="true" class="form-control" runat="server"></asp:DropDownList>
                           </div>
-                         <asp:GridView  Visible="false" ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                              DataSourceID="SqlDataSource2">
+                         <asp:GridView  Visible="false" ID="GridView1" runat="server" AutoGenerateColumns="False" >
                              <Columns>
                                  <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
                              </Columns>
                           </asp:GridView>
+
+
                           <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
+                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
                               SelectCommand="SELECT [mob] FROM [teacher] WHERE (([school] = @school) AND ([name] = @name))">
                               <SelectParameters>
                                   <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
@@ -44,6 +36,7 @@
                                       PropertyName="SelectedValue" Type="String" />
                               </SelectParameters>
                           </asp:SqlDataSource>
+
                           <div class="form-group">
                              <asp:Label ID="Label1" runat="server" Text="Message / Task: " Font-Bold="true" ForeColor="Black"></asp:Label>
                               <asp:TextBox runat="server" TextMode="MultiLine" class="form-control" id="txttask" required=""></asp:TextBox>
