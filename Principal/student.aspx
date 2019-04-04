@@ -17,8 +17,7 @@
      
                       	<div class="thumb center-block centered">
                               <asp:GridView ID="GridView1" Width="100%" CssClass="table table-striped table-advance center-block centered" runat="server" 
-                                  AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" 
-                                  DataSourceID="SqlDataSource1" DataKeyNames="id">
+                                  AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit1" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing1" OnRowUpdating="GridView1_RowUpdating1">
                                   <Columns>
                                       <asp:CommandField ShowEditButton="True" />
                                       <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
@@ -31,8 +30,8 @@
                                   </Columns>
                               </asp:GridView>
                   	
-                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                  ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
+                            <%--  <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                                  ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
                                   SelectCommand="SELECT [name], [class], [usr], [pass], [mob], [id] FROM [parent] WHERE (([class] = @class) AND ([school] = @school)) ORDER BY [name]" 
                                   ConflictDetection="CompareAllValues" 
                                   DeleteCommand="DELETE FROM [parent] WHERE [id] = @original_id AND (([name] = @original_name) OR ([name] IS NULL AND @original_name IS NULL)) AND (([class] = @original_class) OR ([class] IS NULL AND @original_class IS NULL)) AND [usr] = @original_usr AND [pass] = @original_pass AND (([mob] = @original_mob) OR ([mob] IS NULL AND @original_mob IS NULL))" 
@@ -62,13 +61,12 @@
                                       <asp:Parameter Name="usr" Type="String" />
                                       <asp:Parameter Name="original_id" Type="Int32" />
                                   </UpdateParameters>
-                              </asp:SqlDataSource>
+                              </asp:SqlDataSource>--%>
 
 
                               <asp:GridView ID="GridView2" 
                                   CssClass="table table-striped table-advance center-block centered" 
-                                  runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" 
-                                  DataKeyNames="id">
+                                  runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowDeleting="GridView2_RowDeleting" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating">
                                   <Columns>
                                       <asp:CommandField ShowEditButton="True" />
                                       <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" 
@@ -79,8 +77,9 @@
                                       <asp:BoundField DataField="pass" HeaderText="pass" SortExpression="pass" />
                                   </Columns>
                               </asp:GridView>
-                              <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                                  ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
+
+                             <%-- <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                                  ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
                                   SelectCommand="SELECT [id], [name], [mob], [usr], [pass] FROM [parent] WHERE ([school] = @school) ORDER BY [name]" 
                                   
                                   UpdateCommand="UPDATE parent SET mob = @mob, usr = @usr, pass = @pass WHERE (id = @original_id)" 
@@ -110,7 +109,7 @@
                                       <asp:Parameter Name="pass" Type="String" />
                                       <asp:Parameter Name="original_id" Type="Int32" />
                                   </UpdateParameters>
-                              </asp:SqlDataSource>
+                              </asp:SqlDataSource>--%>
 </div></section>
         </section>
 

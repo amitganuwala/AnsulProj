@@ -27,13 +27,13 @@
     
                           <div class="form-group">
                              <asp:Label ID="Label2" runat="server" Text="Class: " Font-Bold="true" ForeColor="Black"></asp:Label>
-                               <asp:DropDownList CssClass="form-control" ID="DropDownList1" AppendDataBoundItems="true" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource2" DataTextField="class" DataValueField="class"></asp:DropDownList>
+                               <asp:DropDownList CssClass="form-control" ID="DropDownList1" AppendDataBoundItems="true" runat="server" AutoPostBack="true" ></asp:DropDownList>
           	
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id]">
+<%--                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id]">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                     </SelectParameters>
-              </asp:SqlDataSource>
+              </asp:SqlDataSource>--%>
 
               <cc1:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server"></cc1:ToolkitScriptManager>
                           </div>
@@ -68,32 +68,34 @@
                       
                   </div></div></div>
 
-                      <asp:GridView ID="GridView2"  runat="server" Visible="false" AutoGenerateColumns="False" DataSourceID="SqlDataSource3">
+                      <asp:GridView ID="GridView2"  runat="server" Visible="false" AutoGenerateColumns="False">
                           <Columns>
                               <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                               <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
                           </Columns>
                     </asp:GridView>
 
-          		    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [mob] FROM [parent] WHERE (([class] = @class) AND ([school] = @school))">
+<%--          		    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [mob] FROM [parent] WHERE (([class] = @class) AND ([school] = @school))">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="DropDownList1" Name="class" PropertyName="SelectedValue" Type="String" />
                             <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                         </SelectParameters>
-                    </asp:SqlDataSource>
+                    </asp:SqlDataSource>--%>
 
 
-                      <asp:GridView ID="GridView3" runat="server" Visible="false"  AutoGenerateColumns="False" DataSourceID="SqlDataSource4">
+                      <asp:GridView ID="GridView3" runat="server" Visible="false"  AutoGenerateColumns="False" >
                           <Columns>
                               <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                               <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
                           </Columns>
                     </asp:GridView>
-          		    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [mob] FROM [parent] WHERE ([school] = @school)">
+
+<%--          		    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [mob] FROM [parent] WHERE ([school] = @school)">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                         </SelectParameters>
-                    </asp:SqlDataSource>
+                    </asp:SqlDataSource>--%>
+
           		</div><!-- /col-lg-12 -->
           	</div><!-- /row -->
     

@@ -10,6 +10,10 @@ using System.Web.UI.WebControls;
 
 public partial class Principal_addevent : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    ClsGlobal glb = new ClsGlobal();
+
     protected void Page_Load(object sender, EventArgs e)
     {
       
@@ -26,10 +30,22 @@ public partial class Principal_addevent : System.Web.UI.Page
 
             string userId = myCookiepr["prnm"];
 
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectprinci(userId);
-            if (dss.Tables[0].Rows.Count == 1)
+            string sql = "select * from principal where usr = '" + userId + "'";
+            dss = glb.GetDataSet(sql);
+
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [classsection] WHERE ([school] = '"+ dss.Tables[0].Rows[0]["school"].ToString() + "') ORDER BY [id]";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
+            }
+
+
+                if (dss.Tables[0].Rows.Count == 1)
             {
                 lblprinm.Text = dss.Tables[0].Rows[0]["namr"].ToString();
                 lblsch.Text = dss.Tables[0].Rows[0]["school"].ToString();

@@ -10,6 +10,14 @@ using System.Web.UI.WebControls;
 
 public partial class Teacher_attendance : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -52,10 +60,12 @@ public partial class Teacher_attendance : System.Web.UI.Page
         {
 
             string userId = myCookiet["tnm"];
-            
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectimeses(userId);
+
+            string sql = "select * from teacher where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -74,6 +84,19 @@ public partial class Teacher_attendance : System.Web.UI.Page
 
                 Response.Redirect("../Teacherlogin.aspx");
             }
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [classsection] WHERE ([school] = '" + lblsch.Text + "') ORDER BY [id]";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
+
+                fillGridView1(lblsch.Text);
+            }
+
         }
     }
     
@@ -82,7 +105,7 @@ public partial class Teacher_attendance : System.Web.UI.Page
 
         for(int i = 0; i < GridView1.Rows.Count; ++i)
         {
-            string conn = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;
+            string conn =ClsVariable.ConnectionString;
             SqlConnection objcon = new SqlConnection(conn);
             objcon.Open();
             SqlCommand objcmd = new SqlCommand("spatt", objcon);
@@ -152,10 +175,15 @@ public partial class Teacher_attendance : System.Web.UI.Page
             ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
 
             objcmd.ExecuteNonQuery();
-            // Response.Write("Created Successfully");
             objcon.Close();
         }
     }
 
-  
+    public void fillGridView1(string school_nm)
+    {
+        string sql = "SELECT [id], [name], [class], [mob], [school] FROM [parent] WHERE (([class] = '"+DropDownList1.SelectedValue+"') AND ([school] = '"+school_nm+"')) ORDER BY [name]";
+        dss2 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss2;
+        GridView1.DataBind();
+    }
 }

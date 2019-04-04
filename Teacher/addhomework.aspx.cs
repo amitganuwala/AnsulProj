@@ -10,6 +10,14 @@ using System.Web.UI.WebControls;
 
 public partial class Teacher_addhomework : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -25,10 +33,11 @@ public partial class Teacher_addhomework : System.Web.UI.Page
         {
 
             string userId = myCookiet["tnm"];
-            
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectimeses(userId);
+
+            string sql = "select * from teacher where usr='" + userId+ "' ";
+            dss = glb.GetDataSet(sql);
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -47,6 +56,29 @@ public partial class Teacher_addhomework : System.Web.UI.Page
 
                 Response.Redirect("../Teacherlogin.aspx");
             }
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [subject] WHERE (([name] = '"+lbltchnm.Text+"') AND ([school] = '"+lblsch.Text+"'))";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
+
+
+
+
+                string sql3 = "SELECT [subject] FROM [subject] WHERE (([class] = '"+DropDownList1.SelectedValue+"') AND ([name] = '"+lbltchnm.Text+"') AND ([school] = '"+lblsch.Text+"'))";
+                dss2 = glb.GetDataSet(sql3);
+                DropDownList3.DataSource = dss2.Tables[0];
+                DropDownList3.DataTextField = "subject";
+                DropDownList3.DataValueField = "subject";
+                DropDownList3.DataBind();
+
+            }
+
+
         }
     }
 

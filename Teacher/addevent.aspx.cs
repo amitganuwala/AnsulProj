@@ -10,6 +10,11 @@ using System.Web.UI.WebControls;
 
 public partial class Teacher_addevent : System.Web.UI.Page
 {
+    ClsGlobal glb = new ClsGlobal();
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -25,10 +30,14 @@ public partial class Teacher_addevent : System.Web.UI.Page
         {
 
             string userId = myCookiet["tnm"];
-            
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectimeses(userId);
+
+            string sql = "select * from teacher where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
+
+           
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -46,6 +55,17 @@ public partial class Teacher_addevent : System.Web.UI.Page
                 ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
 
                 Response.Redirect("../Teacherlogin.aspx");
+            }
+
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [classsection] WHERE ([school] = '"+ lblsch .Text+ "') ORDER BY [id]";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
             }
 
         }

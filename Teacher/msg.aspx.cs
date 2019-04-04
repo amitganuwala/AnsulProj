@@ -13,6 +13,14 @@ using System.Net;
 
 public partial class Teacher_msg : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+    DataSet dss3 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Sessioninfo();
@@ -28,9 +36,10 @@ public partial class Teacher_msg : System.Web.UI.Page
 
             string userId = myCookiet["tnm"];
 
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectimeses(userId);
+            string sql = "select * from teacher where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -49,11 +58,37 @@ public partial class Teacher_msg : System.Web.UI.Page
 
                 Response.Redirect("../Teacherlogin.aspx");
             }
+
+            if (!IsPostBack)
+            {
+                string sql2 = "SELECT [class] FROM [classsection] WHERE ([school] = '" + lblsch.Text + "')";
+                dss2 = glb.GetDataSet(sql2);
+                DropDownList2.DataSource = dss2.Tables[0];
+                DropDownList2.DataTextField = "class";
+                DropDownList2.DataValueField = "class";
+                DropDownList2.DataBind();
+
+
+                string sql3 = "SELECT [name] FROM [parent] WHERE (([school] = '" + lblsch.Text + "') AND ([class] = '" + DropDownList2.SelectedValue + "'))";
+                dss3 = glb.GetDataSet(sql3);
+                DropDownList3.DataSource = dss3.Tables[0];
+                DropDownList3.DataTextField = "name";
+                DropDownList3.DataValueField = "name";
+                DropDownList3.DataBind();
+
+               
+                //fillGridView3();
+            }
+
         }
+
+      
     }
     protected void btnadd_Click(object sender, EventArgs e)
     {
-         SqlConnection objcon = new SqlConnection(ClsVariable.ConnectionString);
+        fillGridView2();
+
+        SqlConnection objcon = new SqlConnection(ClsVariable.ConnectionString);
        //SqlConnection objcon = new SqlConnection("Data Source=intel-pc\\sqlexpress;Initial Catalog=totalschool;Integrated Security=True");
         objcon.Open();
         SqlCommand objcom = new SqlCommand("sptchmsg", objcon);
@@ -101,20 +136,37 @@ public partial class Teacher_msg : System.Web.UI.Page
         objcon.Close();
 
 
+        try
+        {
+            if (Select.sendsms(GridView1.Rows[0].Cells[0].Text, txtdescr.Text, a.ToString(), lblsch.Text))
+            {
 
 
-        if (Select.sendsms(GridView1.Rows[0].Cells[0].Text, txtdescr.Text, a.ToString(), lblsch.Text))
+
+                // Select.sendalert(GridView1.Rows[0].Cells[0].Text, txtdescr.Text, lblsch.Text);
+
+
+                Class1.WebMsgBox.Show("Sent successfully..");
+
+            }
+        }catch(Exception exp)
         {
 
-
-
-           // Select.sendalert(GridView1.Rows[0].Cells[0].Text, txtdescr.Text, lblsch.Text);
-
-
-            Class1.WebMsgBox.Show("Sent successfully..");
-
         }
+
+      
                  
        
+    }
+
+
+
+
+    public void fillGridView2()
+    {
+        string sql = "SELECT [mob] FROM [parent] WHERE (([school] = '"+lblsch.Text+"') AND ([class] = '"+DropDownList2.SelectedValue+"') AND ([name] = '"+DropDownList3.SelectedValue+"'))";
+        dss1 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss1;
+        GridView1.DataBind();
     }
 }

@@ -21,22 +21,20 @@
                            
                           <div class="form-group">
                              <asp:Label ID="Label1" runat="server" Text="Class: " Font-Bold="true" ForeColor="Black"></asp:Label>
-                              <asp:DropDownList ID="DropDownList2" runat="server"  AutoPostBack="true"
-                                  DataSourceID="SqlDataSource1" DataTextField="class" DataValueField="class"></asp:DropDownList>
-                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                              <asp:DropDownList ID="DropDownList2" runat="server"  AutoPostBack="true"></asp:DropDownList>
+<%--                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                                   ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
                                   SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school)">
                                   <SelectParameters>
                                       <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
                                           Type="String" />
                                   </SelectParameters>
-                              </asp:SqlDataSource>
+                              </asp:SqlDataSource>--%>
                           </div>
                           <div class="form-group">
                                 <asp:Label ID="Label2" runat="server" Text="Student name:" Font-Bold="true" ForeColor="Black"></asp:Label>
-                             <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource3" 
-                                    DataTextField="name" DataValueField="name"></asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+                             <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" ></asp:DropDownList>
+<%--                                <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
                                     ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
                                     SelectCommand="SELECT [name] FROM [parent] WHERE (([school] = @school) AND ([class] = @class))">
                                     <SelectParameters>
@@ -45,17 +43,16 @@
                                         <asp:ControlParameter ControlID="DropDownList2" Name="class" 
                                             PropertyName="SelectedValue" Type="String" />
                                     </SelectParameters>
-                                </asp:SqlDataSource>
+                                </asp:SqlDataSource>--%>
                           </div>
                           
                          <div class="form-group">
-                            <asp:GridView ID="GridView1" runat="server" Visible="false" AutoGenerateColumns="False" 
-                                 DataSourceID="SqlDataSource2">
+                            <asp:GridView ID="GridView1" runat="server" Visible="false" AutoGenerateColumns="False" >
                                 <Columns>
                                     <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
                                 </Columns>
                              </asp:GridView>
-                             <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+<%--                             <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
                                  ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
                                  SelectCommand="SELECT [mob] FROM [parent] WHERE (([school] = @school) AND ([class] = @class) AND ([name] = @name))">
                                  <SelectParameters>
@@ -66,7 +63,7 @@
                                      <asp:ControlParameter ControlID="DropDownList3" Name="name" 
                                          PropertyName="SelectedValue" Type="String" />
                                  </SelectParameters>
-                             </asp:SqlDataSource>
+                             </asp:SqlDataSource>--%>
                          </div>
                           <div class="form-group">
                                 <asp:Label ID="Label3" runat="server" Text="Write Message:" Font-Bold="true" ForeColor="Black"></asp:Label>

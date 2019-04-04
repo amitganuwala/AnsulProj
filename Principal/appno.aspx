@@ -57,7 +57,7 @@
                                 
                                 
                                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString3 %>" 
+                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
                               SelectCommand="SELECT [mob] FROM [parent] WHERE ([school] = @school)">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
@@ -67,7 +67,7 @@
                                 
                                 
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString4 %>" 
+                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
                               SelectCommand="SELECT [mob] FROM [parent] WHERE (([class] = @class) AND ([school] = @school))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="lblclass" Name="class" PropertyName="Text" 

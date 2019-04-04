@@ -16,12 +16,12 @@
           		<div class="col-lg-8">
           			<div class="form-panel">
 
-                               <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="class" DataValueField="class" ></asp:DropDownList>
-              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id] DESC">
+                               <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True"  ></asp:DropDownList>
+<%--              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id] DESC">
                   <SelectParameters>
                       <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                   </SelectParameters>
-              </asp:SqlDataSource>
+              </asp:SqlDataSource>--%>
                    
                       
 
@@ -29,7 +29,7 @@
 
                          
                           
-    <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+    <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AllowSorting="True" AutoGenerateColumns="False" >
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
             <asp:BoundField DataField="class" HeaderText="Class" SortExpression="class" />
@@ -40,12 +40,12 @@
                                </asp:GridView>
 
 
-                               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [class], [date], [status], [school] FROM [attendance] WHERE (([school] = @school) AND ([class] = @class)) ORDER BY [name]">
+<%--                               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [class], [date], [status], [school] FROM [attendance] WHERE (([school] = @school) AND ([class] = @class)) ORDER BY [name]">
                                    <SelectParameters>
                                        <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                                        <asp:ControlParameter ControlID="DropDownList2" Name="class" PropertyName="SelectedValue" Type="String" />
                                    </SelectParameters>
-                               </asp:SqlDataSource>
+                               </asp:SqlDataSource>--%>
 
 
                           </div></div></div>
