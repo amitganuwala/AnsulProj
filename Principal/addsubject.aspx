@@ -30,15 +30,15 @@
                                     <h4><i class="fa fa-angle-right"></i> Subject Information</h4>
                                     <p>&nbsp;</p>
                                     <p>
-                                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-advance table-hover" AutoGenerateColumns="False" DataKeyNames="snm" DataSourceID="SqlDataSource1">
+                                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-advance table-hover" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
                                             <Columns>
                                                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                                                 <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                                                <asp:BoundField DataField="snm" HeaderText="Subject Name" ReadOnly="True" SortExpression="snm" />
+                                                <asp:BoundField DataField="snm" HeaderText="Subject Name" SortExpression="snm" />
                                                 <asp:BoundField DataField="school" HeaderText="School" SortExpression="school" />
                                             </Columns>
                                         </asp:GridView>
-                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" DeleteCommand="DELETE FROM [subject-info] WHERE [snm] = @original_snm AND [id] = @original_id AND (([school] = @original_school) OR ([school] IS NULL AND @original_school IS NULL))" InsertCommand="INSERT INTO [subject-info] ([snm], [school]) VALUES (@snm, @school)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [subject-info] WHERE ([school] = @school) ORDER BY [id] DESC" UpdateCommand="UPDATE [subject-info] SET [id] = @id, [school] = @school WHERE [snm] = @original_snm AND [id] = @original_id AND (([school] = @original_school) OR ([school] IS NULL AND @original_school IS NULL))">
+<%--                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%# ClsVariable.ConnectionString%>" DeleteCommand="DELETE FROM [subject-info] WHERE [snm] = @original_snm AND [id] = @original_id AND (([school] = @original_school) OR ([school] IS NULL AND @original_school IS NULL))" InsertCommand="INSERT INTO [subject-info] ([snm], [school]) VALUES (@snm, @school)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [subject-info] WHERE ([school] = @school) ORDER BY [id] DESC" UpdateCommand="UPDATE [subject-info] SET [id] = @id, [school] = @school WHERE [snm] = @original_snm AND [id] = @original_id AND (([school] = @original_school) OR ([school] IS NULL AND @original_school IS NULL))">
                                             <DeleteParameters>
                                                 <asp:Parameter Name="original_snm" Type="String" />
                                                 <asp:Parameter Name="original_id" Type="Int32" />
@@ -58,7 +58,7 @@
                                                 <asp:Parameter Name="original_id" Type="Int32" />
                                                 <asp:Parameter Name="original_school" Type="String" />
                                             </UpdateParameters>
-                                        </asp:SqlDataSource>
+                                        </asp:SqlDataSource>--%>
                                     </p>
             
 

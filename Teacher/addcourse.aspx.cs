@@ -9,6 +9,11 @@ using System.Data.SqlClient;
 
 public partial class Teacher_addcourse : System.Web.UI.Page
 {
+    ClsGlobal glb = new ClsGlobal();
+    DataSet dss = new DataSet();
+    DataSet dss2 = new DataSet();
+    DataSet dss3 = new DataSet();
+
     protected void Page_Load(object sender, EventArgs e)
     {
           Sessioninfo();

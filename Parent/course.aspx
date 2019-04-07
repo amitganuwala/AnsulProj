@@ -20,8 +20,7 @@
     	<div class="homeworkstyle">
         <br /><br />
         	<div class="col-lg-6">
-                <asp:GridView ID="GridView1" class="table-responsive table-hover table table-bordered table-condensed" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="id" DataSourceID="SqlDataSource1">
+                <asp:GridView ID="GridView1" class="table-responsive table-hover table table-bordered table-condensed" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" 
                             ReadOnly="True" SortExpression="id" />
@@ -36,7 +35,7 @@
                     </Columns>
                 </asp:GridView>
 
-                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+<%--                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
                     SelectCommand="SELECT * FROM [course] WHERE (([class] = @class) AND ([school] = @school))">
                           <SelectParameters>
@@ -45,7 +44,7 @@
                               <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
                                   Type="String" />
                           </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:SqlDataSource>--%>
 
                       </div></div></div></div></div>
 

@@ -130,13 +130,13 @@ public partial class Principal_viewtch : System.Web.UI.Page
         string name = row.Cells[2].Text;
         string classs = row.Cells[3].Text;
         string subject = row.Cells[4].Text;
-        string school = row.Cells[5].Text;
+        string school = row.Cells[8].Text;
 
 
 
         // Label lbldeleteid = (Label)row.FindControl("lblID");
         conn.Open();
-        string sql = "DELETE FROM teacher WHERE (usr = '"+ userId + "')";
+        string sql = "DELETE FROM teacher WHERE (id = '"+ id + "' and school='" + school+"')";
         SqlCommand cmd = new SqlCommand(sql, conn);
         cmd.ExecuteNonQuery();
         conn.Close();

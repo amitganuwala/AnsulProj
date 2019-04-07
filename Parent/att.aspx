@@ -23,8 +23,7 @@
                             <h2><asp:Label runat="server" ID="lblsch" ForeColor="Black"></asp:Label></h2>
                         <br /><br />
                         
-                          <asp:GridView ID="GridView1" GridLines="None" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False" 
-                               DataSourceID="SqlDataSource1">
+                          <asp:GridView ID="GridView1" GridLines="None" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False">
                               <Columns>
                                   <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                                   <asp:BoundField DataField="class" HeaderText="class" SortExpression="class" />
@@ -34,7 +33,7 @@
                               </Columns>
                           </asp:GridView>
                         
-                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+<%--                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                                ConnectionString="<%$ ConnectionStrings:school_mateConnectionString6 %>" 
                                
                                  SelectCommand="SELECT [name], [class], [date], [status] FROM [attendance] WHERE (([class] = @class) AND ([school] = @school) AND ([name] = @name)) ORDER BY [date] DESC">
@@ -46,7 +45,7 @@
                                    <asp:ControlParameter ControlID="lblstdnm" Name="name" PropertyName="Text" 
                                        Type="String" />
                                </SelectParameters>
-                           </asp:SqlDataSource>
+                           </asp:SqlDataSource>--%>
                         </div>
 
 

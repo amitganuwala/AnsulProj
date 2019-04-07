@@ -10,6 +10,11 @@ using System.Web.UI.WebControls;
 
 public partial class School_addevent : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
     protected void Page_Load(object sender, EventArgs e)
     {
        
@@ -25,10 +30,14 @@ public partial class School_addevent : System.Web.UI.Page
         {
 
             string userId = myCookies["snm"];
-            
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectschooladmn(userId);
+
+            //Select sels = new Select();
+            //dss = sels.selectschooladmn(userId);
+
+            string sql = "select * from schooladmin where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -47,6 +56,18 @@ public partial class School_addevent : System.Web.UI.Page
 
                 Response.Redirect("../Schooladminlogin.aspx");
             }
+
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [classsection] WHERE ([school] = '"+lblsch.Text+"') ORDER BY [id]";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
+            }
+
 
         }
     }

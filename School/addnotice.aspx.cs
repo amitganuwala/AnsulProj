@@ -9,6 +9,14 @@ using System.Web.UI.WebControls;
 
 public partial class School_addnotice : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+    DataSet dss3 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -24,10 +32,14 @@ public partial class School_addnotice : System.Web.UI.Page
         {
 
             string userId = myCookies["snm"];
-            
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectschooladmn(userId);
+
+            //Select sels = new Select();
+            //dss = sels.selectschooladmn(userId);
+
+            string sql = "select * from schooladmin where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -46,6 +58,20 @@ public partial class School_addnotice : System.Web.UI.Page
 
                 Response.Redirect("../Schooladminlogin.aspx");
             }
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [classsection] WHERE ([school] = '"+lblsch.Text+"') ORDER BY [id]";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
+
+            }
+
+            fillGridView2();
+            fillGridView3();
         }
     }
     protected void btnadd_Click(object sender, EventArgs e)
@@ -116,6 +142,21 @@ public partial class School_addnotice : System.Web.UI.Page
 
     }
 
+    public void fillGridView2()
+    {
+        string sql = "SELECT [name], [mob] FROM [parent] WHERE (([class] = '"+ DropDownList1 .Text+ "') AND ([school] = '"+lblsch.Text+"'))";
+        dss2 = glb.GetDataSet(sql);
+        GridView2.DataSource = dss2;
+        GridView2.DataBind();
+    }
+
+    public void fillGridView3()
+    {
+        string sql = "SELECT [name], [mob] FROM [parent] WHERE ([school] = '"+lblsch.Text+"')";
+        dss3 = glb.GetDataSet(sql);
+        GridView3.DataSource = dss3;
+        GridView3.DataBind();
+    }
 
 }
 

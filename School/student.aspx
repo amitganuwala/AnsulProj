@@ -16,7 +16,7 @@
     <br />
      <div class="desc">
                       	<div class="thumb">
-                              <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="usr">
+                              <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False">
                                   <Columns>
                                       <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
                                       <asp:BoundField DataField="roll" HeaderText="Roll" SortExpression="roll" />
@@ -30,15 +30,15 @@
                                   </Columns>
                               </asp:GridView>
                   	
-                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [roll], [class], [sgen], [school], [pname], [usr], [pass], [mob] FROM [parent] WHERE (([class] = @class) AND ([school] = @school)) ORDER BY [name]">
+<%--                              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [roll], [class], [sgen], [school], [pname], [usr], [pass], [mob] FROM [parent] WHERE (([class] = @class) AND ([school] = @school)) ORDER BY [name]">
                                   <SelectParameters>
                                       <asp:ControlParameter ControlID="lblclass" Name="class" PropertyName="Text" Type="String" />
                                       <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                                   </SelectParameters>
-                              </asp:SqlDataSource>
+                              </asp:SqlDataSource>--%>
 
 
-                              <asp:GridView ID="GridView2" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource2">
+                              <asp:GridView ID="GridView2" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False">
                                   <Columns>
                                       <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                                       <asp:BoundField DataField="roll" HeaderText="roll" SortExpression="roll" />
@@ -51,11 +51,11 @@
                                       <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
                                   </Columns>
                               </asp:GridView>
-                              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [roll], [class], [sgen], [school], [pname], [usr], [pass], [mob] FROM [parent] WHERE ([school] = @school) ORDER BY [name],[class]">
+<%--                              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [roll], [class], [sgen], [school], [pname], [usr], [pass], [mob] FROM [parent] WHERE ([school] = @school) ORDER BY [name],[class]">
                                   <SelectParameters>
                                       <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                                   </SelectParameters>
-                              </asp:SqlDataSource>
+                              </asp:SqlDataSource>--%>
 </div></section>
         </section>
 </asp:Content>

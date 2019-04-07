@@ -19,8 +19,7 @@
 
 
 
-           <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False" 
-                              DataSourceID="SqlDataSource1">
+           <asp:GridView ID="GridView1" class="table table-striped table-advance table-hover" runat="server" AutoGenerateColumns="False">
                <Columns>
                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                    <asp:BoundField DataField="school" HeaderText="school" 
@@ -29,14 +28,6 @@
                    <asp:BoundField DataField="time" HeaderText="time" SortExpression="time" />
                </Columns>
                           </asp:GridView>
-                          <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" 
-                              SelectCommand="SELECT [name], [school], [type], [time] FROM [login] WHERE ([school] = @school) ORDER BY [id] DESC">
-                              <SelectParameters>
-                                  <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                      Type="String" />
-                              </SelectParameters>
-                          </asp:SqlDataSource>
         </div></div></div></div></section></section>
 
 

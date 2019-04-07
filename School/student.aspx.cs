@@ -8,6 +8,13 @@ using System.Web.UI.WebControls;
 
 public partial class School_student : System.Web.UI.Page
 {
+    DataSet ds = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ViewProfile();
@@ -34,14 +41,39 @@ public partial class School_student : System.Web.UI.Page
 
             string userId = myCookies["snm"];
 
-            DataSet ds = new DataSet();
-            Select sels = new Select();
-            ds = sels.selectitemdet(Convert.ToInt32(Request.QueryString["id"].ToString()));
+            //Select sels = new Select();
+            //ds = sels.selectitemdet(Convert.ToInt32(Request.QueryString["id"].ToString()));
+
+
+            string sql = "select * from classsection where id='" + Convert.ToInt32(Request.QueryString["id"].ToString()) + "'";
+            ds = glb.GetDataSet(sql);
+
             if (ds.Tables[0].Rows.Count == 1)
             {
                 lblclass.Text = ds.Tables[0].Rows[0]["class"].ToString();
                 lblsch.Text = ds.Tables[0].Rows[0]["school"].ToString();
+
+                fillGridView1();
+                fillGridView2();
+
             }
         }
+    }
+
+
+    public void fillGridView1()
+    {
+        string sql = "SELECT [name], [roll], [class], [sgen], [school], [pname], [usr], [pass], [mob] FROM [parent] WHERE (([class] = '"+lblclass.Text+"') AND ([school] = '"+lblsch.Text+"')) ORDER BY [name]";
+        dss1 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss1;
+        GridView1.DataBind();
+    }
+
+    public void fillGridView2()
+    {
+        string sql = "SELECT [name], [roll], [class], [sgen], [school], [pname], [usr], [pass], [mob] FROM [parent] WHERE ([school] = '"+lblsch.Text+"') ORDER BY [name],[class]";
+        dss2 = glb.GetDataSet(sql);
+        GridView2.DataSource = dss2;
+        GridView2.DataBind();
     }
 }

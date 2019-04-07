@@ -11,6 +11,8 @@ using System.Web.UI.WebControls;
 
 public partial class login : System.Web.UI.Page
 {
+    ClsGlobal glb = new ClsGlobal();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -58,6 +60,13 @@ public partial class login : System.Web.UI.Page
 
             //Most important, write the cookie to client.
             Response.Cookies.Add(myCookies);
+
+            string sql3 = "SELECT [name], [school] FROM [schooladmin] WHERE ([usr] = '"+txtname.Text+"')";
+            DataSet ds = new DataSet();
+            ds = glb.GetDataSet(sql3);
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
+
 
             string conn1 = ClsVariable.ConnectionString;
             //string conn1 = ConfigurationManager.ConnectionStrings["totalschoolConnectionString"].ConnectionString;

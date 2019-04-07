@@ -42,31 +42,16 @@
                           </table>
                          
 
-       <asp:GridView ID="GridView1" runat="server" Visible="False" DataSourceID="SqlDataSource1" 
+       <asp:GridView ID="GridView1" runat="server" Visible="False" 
                               AutoGenerateColumns="False">
            <Columns>
                <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
            </Columns>
                           </asp:GridView>
-                                <asp:GridView ID="GridView2" Visible="False" runat="server" AutoGenerateColumns="False" 
-                              DataSourceID="SqlDataSource2">
-                                    <Columns>
-                                        <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
-                                    </Columns>
-                          </asp:GridView>
-                                
-                                
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
-                              SelectCommand="SELECT [mob] FROM [parent] WHERE ([school] = @school)">
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                            Type="String" />
-                                    </SelectParameters>
-                          </asp:SqlDataSource>
-                                
-                                
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+
+
+
+                          <%--                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                               ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
                               SelectCommand="SELECT [mob] FROM [parent] WHERE (([class] = @class) AND ([school] = @school))">
                                     <SelectParameters>
@@ -75,7 +60,27 @@
                                         <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
                                             Type="String" />
                                     </SelectParameters>
-                          </asp:SqlDataSource>
+                          </asp:SqlDataSource>--%>
+
+
+                                <asp:GridView ID="GridView2" Visible="False" runat="server" AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
+                                    </Columns>
+                          </asp:GridView>
+                                
+                                
+<%--                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
+                              SelectCommand="SELECT [mob] FROM [parent] WHERE ([school] = @school)">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
+                                            Type="String" />
+                                    </SelectParameters>
+                          </asp:SqlDataSource>--%>
+                                
+                                
+
                                 
                                 
                                 

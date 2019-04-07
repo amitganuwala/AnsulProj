@@ -12,6 +12,12 @@ using System.Data.OleDb;
 
 public partial class School_upload : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //  rbHDR.Visible=false;
@@ -30,9 +36,12 @@ public partial class School_upload : System.Web.UI.Page
 
             string userId = myCookies["snm"];
 
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectschooladmn(userId);
+            //Select sels = new Select();
+            //dss = sels.selectschooladmn(userId);
+
+            string sql = "select * from schooladmin where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 //  lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -51,6 +60,17 @@ public partial class School_upload : System.Web.UI.Page
 
                 Response.Redirect("../Schooladminlogin.aspx");
             }
+
+            if (!IsPostBack)
+            {
+                string sql1 = "SELECT [class] FROM [classsection] WHERE ([school] = '"+lblsch.Text+"')";
+                dss1 = glb.GetDataSet(sql1);
+                DropDownList1.DataSource = dss1.Tables[0];
+                DropDownList1.DataTextField = "class";
+                DropDownList1.DataValueField = "class";
+                DropDownList1.DataBind();
+            }
+
         }
     }
     protected void btnUpload_Click(object sender, EventArgs e)

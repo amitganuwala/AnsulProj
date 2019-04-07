@@ -8,6 +8,11 @@ using System.Web.UI.WebControls;
 
 public partial class pr_list : System.Web.UI.Page
 {
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+
+    ClsGlobal glb = new ClsGlobal();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -24,9 +29,12 @@ public partial class pr_list : System.Web.UI.Page
 
             string userId = myCookies["snm"];
 
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectschooladmn(userId);
+            //Select sels = new Select();
+            //dss = sels.selectschooladmn(userId);
+
+            string sql = "select * from schooladmin where usr='" + userId + "' ";
+            dss = glb.GetDataSet(sql);
+
             if (dss.Tables[0].Rows.Count == 1)
             {
                 lbltchnm.Text = dss.Tables[0].Rows[0]["name"].ToString();
@@ -45,8 +53,17 @@ public partial class pr_list : System.Web.UI.Page
 
                 Response.Redirect("../Schooladminlogin.aspx");
             }
+
+            fillGridView1();
         }
     }
 
-    
+    public void fillGridView1()
+    {
+        string sql = "SELECT * FROM [course] WHERE ([school] = '"+lblsch.Text+"') ORDER BY [id] DESC";
+        dss1 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss1;
+        GridView1.DataBind();
+    }
+
 }

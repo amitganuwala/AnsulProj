@@ -17,12 +17,6 @@
           			<div class="form-panel">
 
                                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True"  ></asp:DropDownList>
-<%--              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school) ORDER BY [id] DESC">
-                  <SelectParameters>
-                      <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
-                  </SelectParameters>
-              </asp:SqlDataSource>--%>
-                   
                       
 
                     <br /> 
@@ -39,13 +33,6 @@
         </Columns>
                                </asp:GridView>
 
-
-<%--                               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [name], [class], [date], [status], [school] FROM [attendance] WHERE (([school] = @school) AND ([class] = @class)) ORDER BY [name]">
-                                   <SelectParameters>
-                                       <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
-                                       <asp:ControlParameter ControlID="DropDownList2" Name="class" PropertyName="SelectedValue" Type="String" />
-                                   </SelectParameters>
-                               </asp:SqlDataSource>--%>
 
 
                           </div></div></div>

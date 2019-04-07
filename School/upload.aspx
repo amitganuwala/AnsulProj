@@ -19,12 +19,12 @@
                       <form class="form-inline" role="form">
                               <h3><asp:Label runat="server" ID="lblsch" Visible="false"></asp:Label></h3>
             <br />
-                          <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="class" DataValueField="class"></asp:DropDownList>
-		            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school)">
+                          <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+<%--		            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:totalschoolConnectionString %>" SelectCommand="SELECT [class] FROM [classsection] WHERE ([school] = @school)">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" Type="String" />
                         </SelectParameters>
-                    </asp:SqlDataSource>              
+                    </asp:SqlDataSource>              --%>
 
                           <div class="form-group"> 
                             Import Excel File:  

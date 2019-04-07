@@ -19,23 +19,14 @@
                              <asp:Label ID="Label2" runat="server" Text="Teacher name: " Font-Bold="true" ForeColor="Black"></asp:Label>
                          <asp:DropDownList ID="DropDownList1" AutoPostBack="true" class="form-control" runat="server"></asp:DropDownList>
                           </div>
+
+
                          <asp:GridView  Visible="false" ID="GridView1" runat="server" AutoGenerateColumns="False" >
                              <Columns>
                                  <asp:BoundField DataField="mob" HeaderText="mob" SortExpression="mob" />
                              </Columns>
                           </asp:GridView>
 
-
-                          <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                              ConnectionString="<%$ ConnectionStrings:school_mateConnectionString5 %>" 
-                              SelectCommand="SELECT [mob] FROM [teacher] WHERE (([school] = @school) AND ([name] = @name))">
-                              <SelectParameters>
-                                  <asp:ControlParameter ControlID="lblsch" Name="school" PropertyName="Text" 
-                                      Type="String" />
-                                  <asp:ControlParameter ControlID="DropDownList1" Name="name" 
-                                      PropertyName="SelectedValue" Type="String" />
-                              </SelectParameters>
-                          </asp:SqlDataSource>
 
                           <div class="form-group">
                              <asp:Label ID="Label1" runat="server" Text="Message / Task: " Font-Bold="true" ForeColor="Black"></asp:Label>

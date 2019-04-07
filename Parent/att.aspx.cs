@@ -8,6 +8,11 @@ using System.Data;
 
 public partial class parent_att : System.Web.UI.Page
 {
+    ClsGlobal glb = new ClsGlobal();
+    DataSet dss = new DataSet();
+    DataSet dss1 = new DataSet();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Sessioninfo();
@@ -36,9 +41,10 @@ public partial class parent_att : System.Web.UI.Page
 
             string userId = myCookiep["pnm"];
 
-            DataSet dss = new DataSet();
-            Select sels = new Select();
-            dss = sels.selectimesespt(userId);
+            string sql = "select * from parent where usr='" + userId + "' ";
+
+            dss = glb.GetDataSet(sql);
+
 
             if (dss.Tables[0].Rows.Count == 1)
             {
@@ -62,7 +68,20 @@ public partial class parent_att : System.Web.UI.Page
                 Response.Redirect("../Parentlogin.aspx");
 
             }
+
+            fillGridView();
+
         }
 
+
+    }
+
+
+    public void fillGridView()
+    {
+        string sql = "SELECT [name], [class], [date], [status] FROM [attendance] WHERE (([class] = '"+lblclass.Text+"') AND ([school] = '"+lblsch.Text+"') AND ([name] = '"+lblstdnm.Text+"')) ORDER BY [date] DESC";
+        dss1 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss1;
+        GridView1.DataBind();
     }
 }

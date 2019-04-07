@@ -9,16 +9,22 @@ using System.Data.SqlClient;
 
 public partial class Principal_appno : System.Web.UI.Page
 {
+    DataSet ds = new DataSet();
+    DataSet dss1 = new DataSet();
+    DataSet dss2 = new DataSet();
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
          ViewProfile();
+
     }
     ClsGlobal glb = new ClsGlobal();
 
 
     public void ViewProfile()
     {
-        DataSet ds = new DataSet();
         Select sel = new Select();
         ds = sel.selectitemdetnotice(Convert.ToInt32(Request.QueryString["id"].ToString()));
         if (ds.Tables[0].Rows.Count == 1)
@@ -33,7 +39,11 @@ public partial class Principal_appno : System.Web.UI.Page
             lbladdt.Text = ds.Tables[0].Rows[0]["duedate"].ToString();
             ClsVariable.Schollname = ds.Tables[0].Rows[0]["school"].ToString();
 
+
+            fillGridView1();
+            fillGridView2();
         }
+
     
     }
     protected void Button1_Click(object sender, EventArgs e)
@@ -171,4 +181,21 @@ public partial class Principal_appno : System.Web.UI.Page
         }
         Response.Redirect("~/Principal/unapprove.aspx");
     }
+
+    public void fillGridView1()
+    {
+        string sql = "SELECT [mob] FROM [parent] WHERE (([class] = '"+lblclass.Text+"') AND ([school] = '"+ ClsVariable.Schollname + "'))";
+        dss1 = glb.GetDataSet(sql);
+        GridView1.DataSource = dss1;
+        GridView1.DataBind();
+    }
+
+    public void fillGridView2()
+    {
+        string sql = "SELECT [mob] FROM [parent] WHERE ([school] = '"+ ClsVariable.Schollname + "')";
+        dss2 = glb.GetDataSet(sql);
+        GridView2.DataSource = dss2;
+        GridView2.DataBind();
+    }
+
 }
